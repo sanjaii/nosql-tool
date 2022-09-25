@@ -1,5 +1,4 @@
 require_relative '../../lib/database'
-require_relative '../../config'
 require_relative '../../lib/parse_data'
 
 describe Database do
