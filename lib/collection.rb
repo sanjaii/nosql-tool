@@ -1,6 +1,9 @@
 require 'json'
 
 class CollectionDoesNotExist < NameError
+  def initialize(collection)
+    super("The Collection `#{collection}` Does Not Exist In The Database")
+  end
 end
 
 class Collection
@@ -19,7 +22,7 @@ class Collection
   public
 
   def find(name)
-    raise CollectionDoesNotExist, "The Collection: `#{name}` Does Not Exist!" unless existing_collections[name]
+    raise CollectionDoesNotExist.new(name) unless existing_collections[name]
 
     existing_collections[name]
   end
