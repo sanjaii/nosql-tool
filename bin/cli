@@ -7,7 +7,7 @@ require_relative '../lib/collection'
 require_relative '../lib/record'
 
 database = Database.new("#{Dir.pwd}/db.json")
-Config.new(database.create).setup unless database.empty?
+Config.new(database.create).setup
 data = ParseDatabase.new(database).data unless database.empty?
 
 begin

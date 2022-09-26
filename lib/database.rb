@@ -29,6 +29,7 @@ class Database
     return self if exist?
 
     File.new(destination, 'w+')
+    logger.info('Created a new database')
     self
   end
 
