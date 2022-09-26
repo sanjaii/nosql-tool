@@ -26,9 +26,10 @@ All the operations implemented here are mostly on collections.
 
 ### Creating a collection
 
-`.bin/cli collection collection_name` creates a collection with the specified name.
+`.bin/cli collection collection_name`, creates a collection with the specified name.
 
-If you run `./bin/cli collection Users`,  *db.json* will be like this
+If you run `./bin/cli collection Users`, *db.json* will be like this
+
 ```
 {
   "collections": {
@@ -41,11 +42,11 @@ If you run `./bin/cli collection Users`,  *db.json* will be like this
 
 ### Adding Records into the Specified Collection
 
-`./bin/cli create collection_name valid_json_in_single_quotes `adds key-value pairs into a collection that exist.
+`./bin/cli create collection_name valid_json_in_single_quotes `, adds key-value pairs into a collection that exist.
 
 You can also pass multiple key-value pairs like shown in below.
 
-If you run `./bin/cli create Users '{"name":"Sanjay", "username":"sanjaii", "age": "25"}' '{"name":"Uday", "username":"uday123", "age": "23"}'` it will produce *db.json* like this
+If you run `./bin/cli create Users '{"name":"Sanjay", "username":"sanjaii", "age": "25"}' '{"name":"Uday", "username":"uday123", "age": "23"}'`,  it will produce *db.json* like this
 
 ```json
 {
@@ -68,7 +69,7 @@ If you run `./bin/cli create Users '{"name":"Sanjay", "username":"sanjaii", "age
 
 ### Search for a value in a collection
 
-`./bin/cli search collection_name value` returns an array of records contains the given value.
+`./bin/cli search collection_name value`, returns an array of records contains the given value.
 
 If you run `./bin/cli search Users Sanjay`, It gives back all the records containing the value `Sanjay`
 
@@ -78,7 +79,7 @@ If you run `./bin/cli search Users Sanjay`, It gives back all the records contai
 
 ### Select records from a collection
 
-`./bin/cli select collection_name name username` output all the records which contain the particular keys
+`./bin/cli select collection_name name username`, output all the records which contain the particular keys
 
 If you run `./bin/cli select Users name username`, it produces the following output
 
@@ -88,9 +89,9 @@ If you run `./bin/cli select Users name username`, it produces the following out
 
 ### Destroy records from a collection
 
-`./bin/cli destroy collection_name key value` delete all the records containing the given key-value pair.
+`./bin/cli destroy collection_name key value`, delete all the records containing the given key-value pair.
 
-If you run `./bin/cli destroy Users name Sanjay` will result in output similar to this
+If you run `./bin/cli destroy Users name Sanjay`, it will result in output similar to this:
 
 ```
 I, [2022-09-26T11:54:55.541645 #98815]  INFO -- : Deleted all the records with key:name and value:Sanjay if there any
