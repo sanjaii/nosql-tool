@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative '../../lib/database'
 require_relative '../../config'
 require_relative '../../lib/collection'
@@ -9,7 +7,7 @@ describe Collection do
   let(:database) { Database.new("#{Dir.pwd}/test.json").create }
   let(:data) { ParseDatabase.new(database).data }
   let(:collection) { Collection.new(data) }
-  let(:collection_name) {'Test'}
+  let(:collection_name) { 'Test' }
   before(:each) do
     Database.new("#{Dir.pwd}/test.json").delete
   end
@@ -31,8 +29,8 @@ describe Collection do
       expect(collection.find('Test')).to be_an_instance_of Array
     end
 
-    it 'should return nil if the collection does not exist' do
-      expect(collection.find('Test')).to be nil
+    it 'should raise error if the collection does not exist' do
+      expect { collection.find('Test') }.to raise_error(CollectionDoesNotExist)
     end
   end
 end

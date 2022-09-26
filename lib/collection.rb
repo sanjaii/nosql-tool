@@ -1,6 +1,7 @@
-# frozen_string_literal: true
-
 require 'json'
+
+class CollectionDoesNotExist < NameError
+end
 
 class Collection
   private
@@ -18,6 +19,8 @@ class Collection
   public
 
   def find(name)
+    raise CollectionDoesNotExist, "The Collection: `#{name}` Does Not Exist!" unless existing_collections[name]
+
     existing_collections[name]
   end
 
