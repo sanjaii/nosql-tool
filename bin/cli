@@ -5,6 +5,11 @@ require_relative '../lib/database'
 require_relative '../lib/parse_data'
 require_relative '../lib/collection'
 require_relative '../lib/record'
+require 'logger'
+
+def logger
+  Logger.new($stdout)
+end
 
 database = Database.new("#{Dir.pwd}/db.json")
 Config.new(database.create).setup
@@ -25,11 +30,13 @@ begin
     database.write(data)
   when 'search'
     collection = Collection.new(data).find(ARGV[1])
-    p Record.new(collection).search(ARGV[2])
+    records = Record.new(collection).search(ARGV[2])
+    logger.info(records.inspect)
   when 'select'
     collection = Collection.new(data).find(ARGV[1])
-    p Record.new(collection).select_records(ARGV[2..])
+    records = Record.new(collection).select_records(ARGV[2..])
+    logger.info(records.inspect)
   end
 rescue CollectionDoesNotExist => e
-  p e.message
+  logger.error(e.message)
 end
