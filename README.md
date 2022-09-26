@@ -7,7 +7,6 @@ I will give you a walk-through with an example for familiarising its functionali
 ## Introduction
 Executables for this tool are located in the  `bin`  directory .
 You have to pass the commands along with the required arguments for performing every operation.
-
 When you execute with or without any `commands`, it creates a *db.json* file in the present working directory with the following scaffold.
 
 ```
@@ -28,7 +27,7 @@ All the operations implemented here are mostly on collections.
 
 `.bin/cli collection collection_name`, creates a collection with the specified name.
 
-If you run `./bin/cli collection Users`, *db.json* will be like this
+If you run `./bin/cli collection Users`, *db.json* will be like this:
 
 ```
 {
@@ -46,7 +45,7 @@ If you run `./bin/cli collection Users`, *db.json* will be like this
 
 You can also pass multiple key-value pairs like shown in below.
 
-If you run `./bin/cli create Users '{"name":"Sanjay", "username":"sanjaii", "age": "25"}' '{"name":"Uday", "username":"uday123", "age": "23"}'`,  it will produce *db.json* like this
+If you run `./bin/cli create Users '{"name":"Sanjay", "username":"sanjaii", "age": "25"}' '{"name":"Uday", "username":"uday123", "age": "23"}'`, it will produce *db.json* like this:
 
 ```json
 {
@@ -71,7 +70,7 @@ If you run `./bin/cli create Users '{"name":"Sanjay", "username":"sanjaii", "age
 
 `./bin/cli search collection_name value`, returns an array of records contains the given value.
 
-If you run `./bin/cli search Users Sanjay`, It gives back all the records containing the value `Sanjay`
+If you run `./bin/cli search Users Sanjay`, it gives back all the records containing the value `Sanjay`.
 
 ```ruby
 	[{"name"=>"Sanjay", "username"=>"sanjaii", "age"=>"25"}]
@@ -79,9 +78,9 @@ If you run `./bin/cli search Users Sanjay`, It gives back all the records contai
 
 ### Select records from a collection
 
-`./bin/cli select collection_name name username`, output all the records which contain the particular keys
+`./bin/cli select collection_name name username`, output all the records which contain the particular keys.
 
-If you run `./bin/cli select Users name username`, it produces the following output
+If you run `./bin/cli select Users name username`, it produces the following output.
 
 ```ruby
 [{"name"=>"Uday", "username"=>"uday123"}, {"name"=>"Sanjay", "username"=>"sanjaii"}]
