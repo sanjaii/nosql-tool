@@ -1,6 +1,9 @@
 require 'json'
 require 'logger'
 
+class DatabaseEmpty < StandardError
+end
+
 class Database
   private
 
@@ -23,6 +26,8 @@ class Database
   end
 
   def create
+    return self if exist?
+
     File.new(destination, 'w+')
     self
   end
