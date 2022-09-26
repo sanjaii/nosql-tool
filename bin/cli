@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+
+require_relative '../config'
+require_relative '../lib/database'
+require_relative '../lib/parse_data'
+require_relative '../lib/collection'
+require_relative '../lib/record'
+
+database = Database.new("#{Dir.pwd}/db.json")
+Config.new(database.create).setup unless database.empty?
+data = ParseDatabase.new(database).data unless database.empty?
+
+begin
+  case ARGV[0]
+  when 'collection'
+    Collection.new(data).create(ARGV[1])
+    database.write(data)
+  when 'create'
+    collection = Collection.new(data).find(ARGV[1])
+    Record.new(collection).create(ARGV[2..])
+    database.write(data)
+  when 'destroy'
+    collection = Collection.new(data).find(ARGV[1])
+    Record.new(collection).destroy(ARGV[2..])
+    database.write(data)
+  when 'search'
+    collection = Collection.new(data).find(ARGV[1])
+    p Record.new(collection).search(ARGV[2])
+  when 'select'
+    collection = Collection.new(data).find(ARGV[1])
+    p Record.new(collection).select_records(ARGV[2..])
+  end
+rescue CollectionDoesNotExist => e
+  p e.message
+end
