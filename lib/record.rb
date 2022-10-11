@@ -14,6 +14,7 @@ class Record
   def create(entries)
     entries.each do |entry|
       collection << JSON.parse(entry)
+      logger.info("Created the following record: #{entry} into the collection")
     end
   rescue JSON::ParserError => e
     logger.error(e.message)
