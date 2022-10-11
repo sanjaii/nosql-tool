@@ -8,7 +8,7 @@ require_relative '../lib/record'
 require_relative '../helper'
 
 class CommandDoesNotExist < StandardError
-  def initialize(message = 'The command does not exist')
+  def initialize(message = 'Invalid usage, please go through the README.')
     super
   end
 end
