@@ -1,8 +1,8 @@
-require 'json'
+require_relative '../helper'
 
 class CollectionDoesNotExist < NameError
-  def initialize(collection)
-    super("The Collection `#{collection}` Does Not Exist In The Database")
+  def initialize(message = 'The Collection Does Not Exist In The Database')
+    super
   end
 end
 
@@ -15,21 +15,17 @@ class Collection
     @existing_collections = data['collections']
   end
 
-  def logger
-    Logger.new($stdout)
-  end
-
   public
 
-  def find(name)
-    raise CollectionDoesNotExist.new(name) unless existing_collections[name]
+  def find(collection)
+    raise CollectionDoesNotExist unless existing_collections[collection]
 
-    existing_collections[name]
+    existing_collections[collection]
   end
 
-  def create(name)
-    existing_collections.merge!({ name => [] })
-    logger.info("Added `#{name}` collection into the database")
+  def create(collection)
+    existing_collections.merge!({ collection => [] })
+    logger.info("Added `#{collection}` collection into the database")
     existing_collections
   end
 end
