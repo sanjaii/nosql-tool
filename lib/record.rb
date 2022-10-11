@@ -1,8 +1,4 @@
-# frozen_string_literal: true
-
-require 'securerandom'
-require 'json'
-require 'logger'
+require_relative '../helper'
 
 class Record
   private
@@ -13,10 +9,6 @@ class Record
     @collection = collection
   end
 
-  def logger
-    Logger.new($stdout)
-  end
-
   public
 
   def create(entries)
@@ -25,13 +17,10 @@ class Record
     end
   rescue JSON::ParserError => e
     logger.error(e.message)
-    logger.warn("Ensure that you're given input in the right JSON format")
+    logger.warn('Invalid JSON format')
   end
 
-  def destroy(args)
-    raise ArgumentError, "Wrong Number of arguments, given #{args.length}, expected 2" unless args.length == 2
-
-    key, value = *args
+  def destroy(key, value)
     collection.delete_if { |record| record[key] == value }
     logger.info("Deleted all the records with key:#{key} and value:#{value} if there any")
     logger.info("Updated collection: #{JSON.pretty_generate(collection)}")
