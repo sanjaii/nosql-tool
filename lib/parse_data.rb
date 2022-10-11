@@ -1,4 +1,4 @@
-require 'json'
+require_relative '../helper'
 
 class ParseDatabase
   private
