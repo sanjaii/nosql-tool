@@ -18,7 +18,7 @@ describe Record do
     it 'should delete records with given key value pairs' do
       entry = ['{"Name":"Test", "username":"testuser"}', '{"Name:"Test"}']
       Record.new(collection).create(entry)
-      Record.new(collection).destroy(%w[Name Test])
+      Record.new(collection).destroy(*%w[Name Test])
       expect(collection.empty?).to be(true)
     end
   end
