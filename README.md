@@ -8,7 +8,7 @@ I will give you a walk-through with an example for familiarizing its functionali
 
 Executables for this tool are located in the  `bin`  directory .
 You have to pass the commands along with the required arguments for performing every operation.
-When you execute with or without any `commands`, it creates a *db.json* file in the present working directory with the following scaffold.
+When you execute `./bin/cli new`, it creates a *db.json* file in the present working directory with the following scaffold.
 
 ```json
 {
