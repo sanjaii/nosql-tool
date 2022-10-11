@@ -2,14 +2,15 @@
 # File-Based NoSQL CLI tool In Ruby
 
 This tool makes use of JSON structure to store a record.
-I will give you a walk-through with an example for familiarising its functionalities.
+I will give you a walk-through with an example for familiarizing its functionalities.
 
 ## Introduction
+
 Executables for this tool are located in the  `bin`  directory .
 You have to pass the commands along with the required arguments for performing every operation.
 When you execute with or without any `commands`, it creates a *db.json* file in the present working directory with the following scaffold.
 
-```
+```json
 {
 	"collections": {}
 }
@@ -17,7 +18,7 @@ When you execute with or without any `commands`, it creates a *db.json* file in 
 
 ## Collections
 
-Collections are similar to tables. 
+Collections are similar to tables.
 Users can store multiple collections in a database.
 Each collection is an array of records (key-value pairs).
 We need to create a collection and specify the collection while adding the records.
@@ -29,7 +30,7 @@ All the operations implemented here are mostly on collections.
 
 If you run `./bin/cli collection Users`, *db.json* will be like this:
 
-```
+```json
 {
   "collections": {
     "Users": [
@@ -92,7 +93,7 @@ If you run `./bin/cli select Users name username`, it produces the following out
 
 If you run `./bin/cli destroy Users name Sanjay`, it will result in output similar to this:
 
-```
+```text
 I, [2022-09-26T11:54:55.541645 #98815]  INFO -- : Deleted all the records with key:name and value:Sanjay if there any
 I, [2022-09-26T11:54:55.541705 #98815]  INFO -- : Updated collection: [
   {
